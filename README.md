@@ -42,3 +42,7 @@ Include the client build in the deployment alongside the API build. By default, 
 All API endpoints are under `/api`. Use `POST /api/auth/login` with the seeded email and password to obtain access and refresh tokens. Send the access token as `Authorization: Bearer <token>`. `POST /api/auth/refresh` renews the token pair and `GET /api/auth/me` returns the current user.
 
 `/api/user` contains the user management endpoints. Creating, listing, reading, changing roles, and deleting users require `SUPERADMIN`. Any authenticated user can update their own profile and password. The browser page intentionally has no authentication UI; use the API docs or an API client.
+
+## License
+
+The project code is licensed under the [MIT License](LICENSE). Bundled third-party skills in `.agents/skills` retain their own licenses.
