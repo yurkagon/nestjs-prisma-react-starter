@@ -14,8 +14,6 @@ Monorepo starter with NestJS, Prisma, PostgreSQL, Redis, React, Vite, and Tailwi
 3. Run `pnpm setup`. It starts PostgreSQL and Redis, applies the initial migration, generates Prisma Client, and creates one SUPERADMIN user. Repeating it does not create another user.
 4. Run `pnpm dev`. The API is at `http://localhost:3000`, its docs at `http://localhost:3000/docs`, and the client at `http://localhost:3001`.
 
-The API serves the built client from `apps/client/dist` when it exists. Run `pnpm build` then `pnpm start:prod` to use one server for both. Set `DATABASE_URL`, `REDIS_URL`, and JWT values in the runtime environment for non-local deployments.
-
 ## Commands
 
 | Command                                              | Purpose                                                            |
@@ -30,6 +28,12 @@ The API serves the built client from `apps/client/dist` when it exists. Run `pnp
 | `pnpm db:generate` / `pnpm db:seed` / `pnpm db:view` | Generate Prisma Client, seed the first user, or open Prisma Studio |
 
 The initial migration contains only the `User` table and `Role` enum. It is for a **new, empty database**. Do not apply it to a database from an earlier application; no data migration is provided.
+
+## Production
+
+Run `pnpm build` and then `pnpm start:prod`. The React app is built into static files in `apps/client/dist`, and the NestJS API serves those files and the API from the same server and origin. A separate web server for the React app is not required; Vite is used only during development.
+
+Include the client build in the deployment alongside the API build. By default, the API looks for it at `apps/client/dist` relative to the monorepo layout. Set `CLIENT_DIST_PATH` to its absolute path if the deployment layout differs. Set `DATABASE_URL`, `REDIS_URL`, and JWT values in the runtime environment.
 
 ## API
 
