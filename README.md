@@ -27,6 +27,8 @@ Monorepo starter with NestJS, Prisma, PostgreSQL, Redis, React, Vite, and Tailwi
 | `pnpm db:migrate` / `pnpm db:deploy`                 | Apply migrations in development or deployment                      |
 | `pnpm db:generate` / `pnpm db:seed` / `pnpm db:view` | Generate Prisma Client, seed the first user, or open Prisma Studio |
 
+`pnpm install` activates the Git hooks through Husky. Before each commit, `lint-staged` runs Prettier and ESLint on staged app code. Before each push, `pnpm test` runs the API tests.
+
 The initial migration contains only the `User` table and `Role` enum. It is for a **new, empty database**. Do not apply it to a database from an earlier application; no data migration is provided.
 
 ## Production
