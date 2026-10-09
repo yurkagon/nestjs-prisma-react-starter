@@ -29,6 +29,10 @@ Monorepo starter with NestJS, Prisma, PostgreSQL, Redis, React, Vite, and Tailwi
 
 `pnpm install` activates the Git hooks through Husky. Before each commit, `lint-staged` runs Prettier and ESLint on staged app code. Before each push, `pnpm test` runs the API tests.
 
+The API validates its environment with Zod when `ConfigModule` starts and reads the parsed values through NestJS `ConfigService`. Invalid settings stop startup and report the affected keys without printing credentials. `DATABASE_URL`, `REDIS_URL`, `JWT_SECRET`, `JWT_EXPIRATION_TIME`, and `JWT_REFRESH_EXPIRATION_TIME` are required. Ports default to 3000 and 3001, including when blank; token lifetimes use duration strings such as `2h` and `7d` and must be at least one second. `NODE_ENV` accepts `development`, `test`, or `production` and defaults to `development`.
+
+The project uses one `.env` file at the repository root. The API, Prisma CLI, Vite, and Docker Compose read this file; shell variables override file values. `prisma.config.ts` loads it with Node.js `loadEnvFile`, and `pnpm db:seed` passes these values to the seed process. Prisma commands do not require API-only JWT or Redis settings.
+
 The initial migration contains only the `User` table and `Role` enum. It is for a **new, empty database**. Do not apply it to a database from an earlier application; no data migration is provided.
 
 ## Production
