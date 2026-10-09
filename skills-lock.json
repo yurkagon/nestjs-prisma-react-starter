@@ -1,12 +1,12 @@
 {
   "version": 1,
   "skills": {
-    "frontend-design": {
-      "source": "anthropics/skills",
-      "ref": "main",
+    "impeccable": {
+      "source": "pbakaus/impeccable",
+      "ref": "d631a8827f99414d2b6daba4ef08b7f8701751d7",
       "sourceType": "github",
-      "skillPath": "skills/frontend-design/SKILL.md",
-      "computedHash": "89496d5dd00f4810205f351759594fc2742bf8eea85a2f2b2d1de59f4bd91576"
+      "skillPath": ".agents/skills/impeccable/SKILL.md",
+      "computedHash": "17cdd9dbf37138d5f22950d1e55b0732a27435098238ad07a962e28fc0b16a69"
     },
     "nestjs-best-practices": {
       "source": "kadajett/agent-nestjs-skills",
